@@ -1,22 +1,16 @@
 // @flow
 
 import * as React from 'react';
-//import { browserHistory } from 'react-router';
+import { withRouter } from 'react-router';
 
 type State = {
-  term: string,
-  onInputChange: (event: SyntheticEvent<HTMLInputElement>) => void,
-  onFormChange: (event: SyntheticEvent<HTMLInputElement>) => void
+  term: string
 }
 
-export default class SearchBar extends React.Component<any, State> {
-  state = {
-    term: '',
-    onInputChange: this.onInputChange()
-  }
+class SearchBar extends React.Component<any, State> {
 
-  //this.onFormSubmit = this.onFormSubmit.bind(this)
-  
+  state = { term: ''};
+
   onInputChange(event :SyntheticEvent<HTMLInputElement>): void {
     this.setState( {term: event.currentTarget.value });
   }
@@ -42,6 +36,7 @@ export default class SearchBar extends React.Component<any, State> {
         </span>
       </form>
     );
-  }
-
+  }  
 }
+
+export default withRouter(SearchBar);
