@@ -4,12 +4,11 @@ import * as React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import Layout from './header/layout';
 
-
 type ValidationValues = {
   name: string,
   email: string,
   password: string,
-  repeatPassword:string
+  repeatPassword: string
 }
 
 class RegisterForm extends React.Component<any> {
@@ -25,51 +24,54 @@ class RegisterForm extends React.Component<any> {
           {...field.input}
         />
         <div className="text-help">
-       {touched ? error : ''}
-       </div>
+          {touched ? error : ''}
+        </div>
       </div>
     );
   }
 
   onSubmit(values: ValidationValues): void {
     console.log(values)
+    //call to backend for registration--> if all validation succed route to a welcome page
   }
 
   render() {
     const { handleSubmit } = this.props;
     return (
-      <div>
-      <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-        <Field
-          label="Name" 
-          name="name"
-          component={this.renderField}
-        />
-        <Field
-          label="Email"
-          name="email"
-          component={this.renderField}
-        />
-        <Field
-          label="Password"
-          name="password"
-          component={this.renderField}
-        />
-        <Field
-          label="Repeat Password"
-          name="repeatPassword"
-          component={this.renderField}
-        />
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+      <Layout>
+        <div>
+          <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+            <Field
+              label="Name"
+              name="name"
+              component={this.renderField}
+            />
+            <Field
+              label="Email"
+              name="email"
+              component={this.renderField}
+            />
+            <Field
+              label="Password"
+              name="password"
+              component={this.renderField}
+            />
+            <Field
+              label="Repeat Password"
+              name="repeatPassword"
+              component={this.renderField}
+            />
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </Layout>
     )
   }
 }
 
 function validate(values: ValidationValues): any {
   let errors = {};
-  
+
   if (!values.name) {
     errors.name = "Enter a name!";
   }
