@@ -2,9 +2,11 @@
 
 import * as React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import Layout from './header/layout';
+import { AppTemplate } from '../layouts';
+import * as Const from '../modules/constants';
+import axios from 'axios';
 
-type ValidationValues = {
+type RegisterParams = {
   name: string,
   email: string,
   password: string,
@@ -23,22 +25,22 @@ class RegisterForm extends React.Component<any> {
           type="text"
           {...field.input}
         />
-        <div className="text-help">
+        <span className="text-help">
           {touched ? error : ''}
-        </div>
+        </span>
       </div>
     );
   }
 
-  onSubmit(values: ValidationValues): void {
+  onSubmit(values: RegisterParams): void {
     console.log(values)
-    //call to backend for registration--> if all validation succed route to a welcome page
+  
   }
 
   render() {
     const { handleSubmit } = this.props;
     return (
-      <Layout>
+      <AppTemplate>
         <div>
           <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
             <Field
@@ -64,12 +66,14 @@ class RegisterForm extends React.Component<any> {
             <button type="submit">Submit</button>
           </form>
         </div>
-      </Layout>
+      </AppTemplate>
     )
   }
 }
 
-function validate(values: ValidationValues): any {
+
+
+function validate(values: RegisterParams): any {
   let errors = {};
 
   if (!values.name) {
@@ -90,4 +94,4 @@ function validate(values: ValidationValues): any {
 export default reduxForm({
   validate,
   form: 'RegisterForm'
-})(RegisterForm)
+})(RegisterForm);

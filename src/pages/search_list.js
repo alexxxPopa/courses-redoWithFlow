@@ -1,7 +1,7 @@
 // @flow
 
 import * as React from 'react';
-
+import { AppTemplate } from '../layouts';
 
 export default class SearchList extends React.Component<any> {
 
@@ -9,9 +9,13 @@ export default class SearchList extends React.Component<any> {
     console.log(this.props.match.params.term);
   }
 
-  render():React.Node {
-    return(
-    <div>Fuck</div>
+  render(): React.Node {
+    return (
+      <AppTemplate>
+        <div>
+          Fuck
+      </div>
+      </AppTemplate>
     )
   }
 }

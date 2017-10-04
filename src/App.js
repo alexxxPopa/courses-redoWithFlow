@@ -4,10 +4,9 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import reducers from './reducers';
+import routes from './routes';
 
-import SearchList from './components/search_list';
-import Home from './components/home';
-import Register from './components/register';
+//import { Home, Register, Login, SearchList } from './pages' 
 
 const createStoreWithMiddleware = applyMiddleware()(createStore);
 
@@ -18,9 +17,10 @@ class App extends Component {
         <BrowserRouter>
           <div>
             <Switch>
-              <Route path="/search/:term" component={ SearchList } />
-              <Route path="/register" component={ Register } />
-              <Route path="/" component={ Home } />
+              { routes.map( route => (
+                <Route key= {route.path} { ...route } />
+              ))
+                }
             </Switch>
           </div>
         </BrowserRouter>

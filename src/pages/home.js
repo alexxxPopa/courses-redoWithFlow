@@ -1,10 +1,12 @@
 // @flow
 
 import React from 'react';
-import AppTemplate from './header/layout';
+import { AppTemplate } from '../layouts';
 
-export default () => (
+const Home = () => (
   <AppTemplate>
     <span>This is the Home</span>
   </AppTemplate>
 );
+
+export default Home;

@@ -1,0 +1,1 @@
+export { default as footerContent } from './footer-content';
