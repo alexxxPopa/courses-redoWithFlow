@@ -13,14 +13,12 @@ type Props = {
 const Navigation = (props: Props): React.Node => (
   <div>
     <nav>
-      <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/register">Register</Link></li>
-        {authButton(props)}
-      </ul>
+      <Link to="/">Home</Link>
+      {registerButton(props)}
+      {authButton(props)}
     </nav>
     <SearchBar />
-  </div>
+  </div >
 )
 
 const authButton = (props: Props) => {
@@ -28,6 +26,12 @@ const authButton = (props: Props) => {
     return <button onClick={() => props.logout()}> Sign Out </button>
   }
   return <Link to="/login"><button>Sign in</button></Link>
+}
+
+const registerButton = (props: Props) => {
+  if (!props.isAuthenticated) {
+    return <Link to='/register'><button> Register </button></Link>
+  }
 }
 
 const mapStateToProps = (state) => (

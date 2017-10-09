@@ -1,5 +1,6 @@
 
-import { Home, Login, Register, SearchList } from '../pages';
+import { Home, Login, Register, SearchList, MyPage } from '../pages';
+import { withAuthentication } from '../enhancers/';
 
 const routes = [
   {
@@ -18,10 +19,15 @@ const routes = [
     exact:true,
   },
   {
+    path: "/myPage",
+    component: withAuthentication(MyPage),
+    exact:true,
+  },
+  {
     path: "/",
     component: Home,
     exact:true,
-  }
+  },
 ]
 
 export default routes;

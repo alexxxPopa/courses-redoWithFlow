@@ -13,7 +13,7 @@ class Login extends React.Component<any> {
 
   onSubmit() {
     this.props.login()
-    this.props.history.push('/')
+    this.props.history.push('/myPage')
   }
 
   render() {
