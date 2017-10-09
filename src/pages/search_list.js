@@ -13,7 +13,7 @@ export default class SearchList extends React.Component<any> {
     return (
       <AppTemplate>
         <div>
-          Fuck
+          
       </div>
       </AppTemplate>
     )

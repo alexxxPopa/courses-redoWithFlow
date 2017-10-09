@@ -3,11 +3,20 @@
 import * as React from 'react';
 import { Button, Icon, Form } from 'semantic-ui-react';
 import { Field, reduxForm } from 'redux-form';
-import { AppTemplate } from '../layouts';
+import { AppTemplate } from '../../layouts';
+import { connect } from 'react-redux';
 
 type LoginParams = {
   email: string,
   password: string,
+}
+
+type Props = {
+  authenticated: boolean,
+}
+
+type State = {
+  isAuthenticated: boolean
 }
 
 class LoginForm extends React.Component<any> {
@@ -29,17 +38,12 @@ class LoginForm extends React.Component<any> {
     );
   }
 
-  onSubmit(values: LoginParams): void {
-    console.log(values)
-    //call to backend for login--> if all validation succed route to a welcome page
-  }
-
   render() {
     const { handleSubmit } = this.props;
     return (
       <AppTemplate>
         <div>
-          <Form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+          <Form onSubmit={ handleSubmit(this.props.onSubmit.bind(this)) }>
             <Field
               label="Email"
               name="email"
@@ -52,7 +56,7 @@ class LoginForm extends React.Component<any> {
               type="password"
               component={this.renderField}
             />
-            <Button type="submit">Submit</Button>
+            <Button type="submit">Login</Button>
           </Form>
           <div>
             <Button color='facebook'>

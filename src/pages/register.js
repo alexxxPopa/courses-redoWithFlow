@@ -3,8 +3,6 @@
 import * as React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { AppTemplate } from '../layouts';
-import * as Const from '../modules/constants';
-import axios from 'axios';
 
 type RegisterParams = {
   name: string,

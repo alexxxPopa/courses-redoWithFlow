@@ -6,8 +6,6 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import reducers from './reducers';
 import routes from './routes';
 
-//import { Home, Register, Login, SearchList } from './pages' 
-
 const createStoreWithMiddleware = applyMiddleware()(createStore);
 
 class App extends Component {
