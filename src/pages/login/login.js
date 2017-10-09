@@ -13,7 +13,7 @@ class Login extends React.Component<any> {
 
   onSubmit() {
     this.props.login()
-    // this.props.history.push('/')
+    this.props.history.push('/')
   }
 
   render() {
@@ -31,4 +31,6 @@ const mapStateToProps = (state) => (
   { isAuthenticated: state.session.isAuthenticated }
 )
 
-export default connect(mapStateToProps, bindActionsToDispatch)(Login)
+const BoundLogin = connect(mapStateToProps, bindActionsToDispatch)(Login)
+
+export default withRouter(BoundLogin);

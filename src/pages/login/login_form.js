@@ -41,7 +41,6 @@ class LoginForm extends React.Component<any> {
   render() {
     const { handleSubmit } = this.props;
     return (
-      <AppTemplate>
         <div>
           <Form onSubmit={ handleSubmit(this.props.onSubmit.bind(this)) }>
             <Field
@@ -69,7 +68,6 @@ class LoginForm extends React.Component<any> {
           </Button>
           </div>
         </div>
-      </AppTemplate>
     );
   }
 }

@@ -16,7 +16,7 @@ const Navigation = (props: Props): React.Node => (
       <ul>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/register">Register</Link></li>
-        { authButton(props) }
+        {authButton(props)}
       </ul>
     </nav>
     <SearchBar />
@@ -24,8 +24,8 @@ const Navigation = (props: Props): React.Node => (
 )
 
 const authButton = (props: Props) => {
-  if ( props.isAuthenticated ) {
-    return <button onClick={ () => props.logout() }> Sign Out </button>
+  if (props.isAuthenticated) {
+    return <button onClick={() => props.logout()}> Sign Out </button>
   }
   return <Link to="/login"><button>Sign in</button></Link>
 }
@@ -35,7 +35,7 @@ const mapStateToProps = (state) => (
 )
 
 const bindActionsToDispatch = (dispatch) => (
-  { logout: () => { dispatch(actions.logout())} }
+  { logout: () => { dispatch(actions.logout()) } }
 )
 
 export default connect(mapStateToProps, bindActionsToDispatch)(Navigation);
