@@ -3,10 +3,11 @@ import './App.css';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import reduxThunk from 'redux-thunk';
 import reducers from './reducers';
 import routes from './routes';
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 
 class App extends Component {
   render() {

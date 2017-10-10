@@ -2,10 +2,9 @@
 
 import * as React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { AppTemplate } from '../layouts';
+import { AppTemplate } from '../../layouts';
 
 type RegisterParams = {
-  name: string,
   email: string,
   password: string,
   repeatPassword: string
@@ -20,7 +19,7 @@ class RegisterForm extends React.Component<any> {
       <div>
         <label>{field.label}</label>
         <input
-          type="text"
+          type={field.type}
           {...field.input}
         />
         <span className="text-help">
@@ -30,9 +29,10 @@ class RegisterForm extends React.Component<any> {
     );
   }
 
-  onSubmit(values: RegisterParams): void {
-    console.log(values)
-  
+  renderServerError(error) {
+    <div>
+      { error }
+    </div>
   }
 
   render() {
@@ -40,30 +40,29 @@ class RegisterForm extends React.Component<any> {
     return (
       <AppTemplate>
         <div>
-          <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-            <Field
-              label="Name"
-              name="name"
-              component={this.renderField}
-            />
+          <form onSubmit={handleSubmit(this.props.onSubmit.bind(this))}>
             <Field
               label="Email"
               name="email"
+              type="text"
               component={this.renderField}
             />
             <Field
               label="Password"
               name="password"
+              type="password"
               component={this.renderField}
             />
             <Field
               label="Repeat Password"
-              name="repeatPassword"
+              name="password_confirmation"
+              type="password"
               component={this.renderField}
             />
             <button type="submit">Submit</button>
           </form>
         </div>
+        { this.renderServerError(this.props.error)}
       </AppTemplate>
     )
   }
@@ -74,9 +73,6 @@ class RegisterForm extends React.Component<any> {
 function validate(values: RegisterParams): any {
   let errors = {};
 
-  if (!values.name) {
-    errors.name = "Enter a name!";
-  }
   if (!values.email) {
     errors.email = "Enter an email!";
   }

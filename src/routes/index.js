@@ -1,5 +1,5 @@
 
-import { Home, Login, Register, SearchList, MyPage } from '../pages';
+import { Home, Login, Register, SearchList, MyPage, Confirmation } from '../pages';
 import { withAuthentication } from '../enhancers/';
 
 const routes = [
@@ -21,6 +21,11 @@ const routes = [
   {
     path: "/myPage",
     component: withAuthentication(MyPage),
+    exact:true,
+  },
+  {
+    path: "/confirmation",
+    component: Confirmation,
     exact:true,
   },
   {

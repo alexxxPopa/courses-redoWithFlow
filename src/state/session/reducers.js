@@ -19,6 +19,16 @@ const isAuthenticated = (state: boolean = false, action: Action) => {
   }
 }
 
+const error = (state= {}, action) => {
+  switch (action.type) {
+    case types.AUTH_ERROR:
+      return action.payload;
+    default:
+      return state
+  }
+}
+
 export default combineReducers({
-  isAuthenticated: isAuthenticated
+  isAuthenticated: isAuthenticated,
+  error: error
 })

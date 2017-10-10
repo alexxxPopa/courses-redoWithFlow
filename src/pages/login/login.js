@@ -27,10 +27,6 @@ const bindActionsToDispatch = (dispatch) => (
   { login: () => { dispatch(actions.login())} }
 )
 
-const mapStateToProps = (state) => (
-  { isAuthenticated: state.session.isAuthenticated }
-)
-
-const BoundLogin = connect(mapStateToProps, bindActionsToDispatch)(Login)
+const BoundLogin = connect(null, bindActionsToDispatch)(Login)
 
 export default withRouter(BoundLogin);
