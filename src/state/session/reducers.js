@@ -5,7 +5,7 @@ import { combineReducers } from 'redux';
 
 type Action = {
   type: string,
-  payload: boolean
+  payload: any
 }
 
 const isAuthenticated = (state: boolean = false, action: Action) => {
