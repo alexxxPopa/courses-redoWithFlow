@@ -2,7 +2,9 @@
 
 import * as React from 'react';
 import { Field, reduxForm } from 'redux-form';
+import { SubmissionError } from 'redux-form'
 import { AppTemplate } from '../../layouts';
+import _ from 'lodash';
 
 type RegisterParams = {
   email: string,
@@ -13,13 +15,14 @@ type RegisterParams = {
 class RegisterForm extends React.Component<any> {
 
   renderField(field): React.Node {
-    const { meta: { touched, error } } = field;
+    const { err, meta: { touched, error } } = field;
 
     return (
       <div>
         <label>{field.label}</label>
         <input
           type={field.type}
+          placeholder={field.label}
           {...field.input}
         />
         <span className="text-help">
@@ -29,18 +32,24 @@ class RegisterForm extends React.Component<any> {
     );
   }
 
-  renderServerError(error) {
-    <div>
-      { error }
-    </div>
-  }
+  // renderServerError(error) {
+   
+  //   if (!_.isEmpty(this.props.err)) { 
+  //   let arr = _.map(_.toPairs(this.props.err), d => _.fromPairs([d]))
+  //    return Object.entries(arr[0]).map((key) => (
+  //       <div>
+  //         <strong> Ooops!{key[1][0]}</strong>
+  //       </div>
+  //     ))
+  //   }
+  // }
 
   render() {
-    const { handleSubmit } = this.props;
+    const { handleSubmit, error, onSubmit } = this.props;
     return (
       <AppTemplate>
         <div>
-          <form onSubmit={handleSubmit(this.props.onSubmit.bind(this))}>
+          <form onSubmit={handleSubmit(onSubmit.bind(this))}>
             <Field
               label="Email"
               name="email"
@@ -60,9 +69,9 @@ class RegisterForm extends React.Component<any> {
               component={this.renderField}
             />
             <button type="submit">Submit</button>
+            {error && <strong>{error}</strong>}
           </form>
         </div>
-        { this.renderServerError(this.props.error)}
       </AppTemplate>
     )
   }
@@ -79,8 +88,8 @@ function validate(values: RegisterParams): any {
   if (!values.password) {
     errors.password = "Enter a password!";
   }
-  if (!values.repeatPassword) {
-    errors.repeatPassword = "Enter password repeat!";
+  if (!values.password_confirmation) {
+    errors.password_confirmation = "Enter password repeat!";
   }
   return errors;
 }

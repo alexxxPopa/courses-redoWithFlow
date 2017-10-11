@@ -2,6 +2,7 @@
 
 import * as types from './types';
 import axios from 'axios';
+import { withRouter } from 'react-router';
 
 
 type AuthResponse = {
@@ -9,9 +10,6 @@ type AuthResponse = {
   payload: boolean
 }
 
-type RegisterResponse = {
-  error: string
-}
 
 type RegisterParams = {
   email: string,
@@ -33,21 +31,15 @@ export function logout(): AuthResponse {
   }
 }
 
-export function register(values: RegisterParams) {
-  return async function (dispatch) {
-    let response;
-    try {
-      response = await axios.post(`${types.ROOT_URL}/users`, values)
-    } catch(err) {
-      response = err.response
-    }
-    if (response.status >= 200 && response.status < 300) {
+// export function register(values: RegisterParams) {
+//   return async function (dispatch) {
+//    const promise = await axios.post(`${types.ROOT_URL}/users`, values)
+//    return promise;
+//   }
+// }
 
-    } else {
-        dispatch(authError(response.data))
-    }
-  }
-}
+export const register = (values: RegisterParams) => async dispatch =>
+  await axios.post(`${types.ROOT_URL}/users`, values);
 
 export function authError(error) {
   return {
