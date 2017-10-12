@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { SubmissionError } from 'redux-form'
 import { AppTemplate } from '../../layouts';
 import _ from 'lodash';
 

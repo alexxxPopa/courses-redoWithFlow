@@ -5,6 +5,7 @@ import * as signinActions from '../../state/auth/signin';
 import SigninForm from './login_form';
 import { withRouter } from 'react-router';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
+import { reset } from 'redux-form'
 import _ from 'lodash';
 
 type Props = {
@@ -45,6 +46,7 @@ const bindActionsToDispatch = (dispatch) => ({
     promise.then(() => dispatch(hideLoading()))
       .catch((error) => {
         dispatch(signinActions.processSigninError(error))
+        dispatch(reset('SigninForm'))
         dispatch(hideLoading())
       })
     return promise
