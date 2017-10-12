@@ -2,14 +2,14 @@ import * as React from 'react';
 import * as types from './types';
 import { processErrorResponse } from '../../../enhancers' 
 
-export const processError = (error) => dispatch =>  {
+export const processSignupError = (error) => dispatch =>  {
   const err =  processErrorResponse(error.response.data)
-  dispatch(authError(err))
+  dispatch(signupError(err))
  } 
  
- export const authError = (error) => {
+const signupError = (error) => {
    return {
-     type: types.AUTH_ERROR,
+     type: types.SIGNUP_ERROR,
      payload: error
    }
  }

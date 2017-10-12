@@ -12,14 +12,13 @@ type RegisterParams = {
   repeatPassword: string
 }
 
-class RegisterForm extends React.Component<any> {
+class SignupForm extends React.Component<any> {
 
   renderField(field): React.Node {
     const { err, meta: { touched, error } } = field;
 
     return (
       <div>
-        <label>{field.label}</label>
         <input
           type={field.type}
           placeholder={field.label}
@@ -67,22 +66,22 @@ class RegisterForm extends React.Component<any> {
 
 
 
-function validate(values: RegisterParams): any {
+function validate(values: RegisterParams): mixed {
   let errors = {};
 
   if (!values.email) {
-    errors.email = "Enter an email!";
-  }
+    errors.email = 'Required';
+  } 
   if (!values.password) {
-    errors.password = "Enter a password!";
+    errors.password = 'Required';
   }
   if (!values.password_confirmation) {
-    errors.password_confirmation = "Enter password repeat!";
+    errors.password_confirmation = 'Required';
   }
   return errors;
 }
 
 export default reduxForm({
   validate,
-  form: 'RegisterForm'
-})(RegisterForm);
+  form: 'SignupForm'
+})(SignupForm);

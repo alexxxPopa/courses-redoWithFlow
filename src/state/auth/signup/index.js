@@ -1,10 +1,10 @@
-import { register } from './actions';
-import * as errorActions from './errors';
-import reducer from './reducers'
+import { signup } from './actions';
+import { processSignupError } from './errors';
+import reducer from './reducers';
 
 export {
-  register,
-  errorActions
+  signup,
+  processSignupError
 } 
 
 export default reducer;

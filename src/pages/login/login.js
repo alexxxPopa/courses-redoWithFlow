@@ -1,32 +1,59 @@
 //@flow
 import * as React from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../../state/auth/actions';
-import LoginForm from './login_form';
+import * as signinActions from '../../state/auth/signin';
+import SigninForm from './login_form';
 import { withRouter } from 'react-router';
+import { showLoading, hideLoading } from 'react-redux-loading-bar';
+import _ from 'lodash';
 
 type Props = {
   login: () => boolean
 }
 
+type LoginParams = {
+  email: string,
+  password: string,
+}
+
 class Login extends React.Component<any> {
 
-  onSubmit() {
-    this.props.login()
-    this.props.history.push('/myPage')
+  onSubmit(values) {
+    this.props.signin(values).then(() => this.props.history.push('/myPage'))
+  }
+
+  renderServerError() {
+    if (!_.isEmpty(this.props.error)){
+     return this.props.error
+     }
   }
 
   render() {
     return (
-      <LoginForm onSubmit={ () => this.onSubmit() } />
+      <div>
+      <SigninForm onSubmit={ (values) => this.onSubmit(values) } />
+      { this.renderServerError() }
+      </div>
     )
   }
 }
 
-const bindActionsToDispatch = (dispatch) => (
-  { login: () => { dispatch(actions.login())} }
-)
+const bindActionsToDispatch = (dispatch) => ({
+   signin: (values) => {
+    dispatch(showLoading())
+    const promise = dispatch(signinActions.signin(values))
+    promise.then(() => dispatch(hideLoading()))
+      .catch((error) => {
+        dispatch(signinActions.processSigninError(error))
+        dispatch(hideLoading())
+      })
+    return promise
+    } 
+  })
 
-const BoundLogin = connect(null, bindActionsToDispatch)(Login)
+const mapStateToProps = (state) => (
+  { error: state.auth.signin.signinError})
+
+const BoundLogin = connect(mapStateToProps, bindActionsToDispatch)(Login)
 
 export default withRouter(BoundLogin);

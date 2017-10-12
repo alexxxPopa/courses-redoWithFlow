@@ -1,11 +1,10 @@
 
 import * as React from 'react';
-import RegisterForm from './register_form';
+import SignupForm from './register_form';
 import { processErrorResponse } from '../../enhancers';
-import * as actions from '../../state/auth/signup';
+import * as signupActions from '../../state/auth/signup';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { SubmissionError } from 'redux-form'
 import _ from 'lodash';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 
@@ -35,7 +34,7 @@ class Register extends React.Component<Props> {
   render() { 
     return (
       <div>
-        <RegisterForm onSubmit={(values) => this.onSubmit(values)} />
+        <SignupForm onSubmit={(values) => this.onSubmit(values)} />
         { this.renderServerError() }
       </div>
     )
@@ -43,17 +42,17 @@ class Register extends React.Component<Props> {
 }
 
 const mapStateToProps = (state) => (
-  { error: state.auth.signup.registerError })
+  { error: state.auth.signup.signupError })
 
 const bindActionsToDispatch = (dispatch) => ({
   register: (values) => { 
     dispatch(showLoading())
-    const promise = dispatch(actions.register(values));
+    const promise = dispatch(signupActions.signup(values))
     promise.then(() => dispatch(hideLoading()))
-    .catch((error => {
-      dispatch(actions.errorActions.processError(error))
+    .catch((error) => {
+      dispatch(signupActions.processSignupError(error))
       dispatch(hideLoading())
-    }))
+    })
     return promise
   }
   })
