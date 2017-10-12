@@ -32,18 +32,6 @@ class RegisterForm extends React.Component<any> {
     );
   }
 
-  // renderServerError(error) {
-   
-  //   if (!_.isEmpty(this.props.err)) { 
-  //   let arr = _.map(_.toPairs(this.props.err), d => _.fromPairs([d]))
-  //    return Object.entries(arr[0]).map((key) => (
-  //       <div>
-  //         <strong> Ooops!{key[1][0]}</strong>
-  //       </div>
-  //     ))
-  //   }
-  // }
-
   render() {
     const { handleSubmit, error, onSubmit } = this.props;
     return (

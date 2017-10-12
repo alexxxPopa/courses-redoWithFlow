@@ -6,6 +6,8 @@ import * as actions from '../../state/session/actions';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { SubmissionError } from 'redux-form'
+import _ from 'lodash';
+import { showLoading, hideLoading } from 'react-redux-loading-bar';
 
 type Props = {
   register: (values: RegisterParams) => void,
@@ -21,56 +23,42 @@ type RegisterParams = {
 class Register extends React.Component<Props> {
 
   onSubmit(values) {
-    this.props.register(values)
-    this.props.history.push('/')
+    this.props.register(values).then(() =>  this.props.history.push('/'))
   }
 
-  render() {
+  renderServerError() {
+    if (!_.isEmpty(this.props.error)){
+     return (Object.values(this.props.error[0]))
+    }
+  }
+
+  render() { 
     return (
       <div>
         <RegisterForm onSubmit={(values) => this.onSubmit(values)} />
+        { this.renderServerError() }
       </div>
     )
   }
 }
 
-// const mapStateToProps = (state) => (
-//   { error: state.session.error })
+const mapStateToProps = (state) => (
+  { error: state.session.error })
 
 const bindActionsToDispatch = (dispatch) => ({
   register: (values) => { 
-
+    dispatch(showLoading())
     const promise = dispatch(actions.register(values));
-
-    promise.then(() => {
-      return promise;
-    }).catch(() => {
-    })
-
-    throw new SubmissionError({
-      email: "asdfadsf",
-      _error: 'Register failed!'
+    promise.then(() => dispatch(hideLoading()))
+    .catch((error => {
+      dispatch(actions.processError(error))
+      dispatch(hideLoading())
+    }))
+    return promise
+    
+  }
   })
 
-
-  //   throw new SubmissionError({
-  //     email: "asdfadsf",
-  //     _error: 'Register failed!'
-  // })
-
-    // const promise = dispatch(actions.register(values));
-
-    // promise.catch()
-
-    //  promise.catch((error) => {
-    //    console.log("catch");
-    //    return processErrorResponse(error.response.data)
-    // })
-    // return promise;
-  }
-}
-)
-
-const BoundRegister = connect(null, bindActionsToDispatch)(Register)
+const BoundRegister = connect(mapStateToProps, bindActionsToDispatch)(Register)
 
 export default withRouter(BoundRegister);

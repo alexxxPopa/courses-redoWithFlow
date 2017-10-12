@@ -3,7 +3,7 @@
 import * as types from './types';
 import axios from 'axios';
 import { withRouter } from 'react-router';
-
+import { processErrorResponse } from '../../enhancers' 
 
 type AuthResponse = {
   type: string,
@@ -31,16 +31,14 @@ export function logout(): AuthResponse {
   }
 }
 
-// export function register(values: RegisterParams) {
-//   return async function (dispatch) {
-//    const promise = await axios.post(`${types.ROOT_URL}/users`, values)
-//    return promise;
-//   }
-// }
+export const register = (values: RegisterParams) => async dispatch => {
+  await  axios.post(`${types.ROOT_URL}/users`, values) 
+}
 
-export const register = (values: RegisterParams) => async dispatch =>
-  await axios.post(`${types.ROOT_URL}/users`, values);
-
+export const processError = (error) => dispatch =>  {
+ const err =  processErrorResponse(error.response.data)
+ dispatch(authError(err))
+} 
 export function authError(error) {
   return {
     type: types.AUTH_ERROR,
