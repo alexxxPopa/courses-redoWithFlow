@@ -31,17 +31,18 @@ export function logout(): AuthResponse {
   }
 }
 
-export const register = (values: RegisterParams) => async dispatch => {
-  await  axios.post(`${types.ROOT_URL}/users`, values) 
-}
+// export const register = (values: RegisterParams) => async dispatch => {
+//   await  axios.post(`${types.ROOT_URL}/users`, values) 
+// }
 
-export const processError = (error) => dispatch =>  {
- const err =  processErrorResponse(error.response.data)
- dispatch(authError(err))
-} 
-export function authError(error) {
-  return {
-    type: types.AUTH_ERROR,
-    payload: error
-  }
-}
+// export const processError = (error) => dispatch =>  {
+//  const err =  processErrorResponse(error.response.data)
+//  dispatch(authError(err))
+// } 
+
+// export function authError(error) {
+//   return {
+//     type: types.AUTH_ERROR,
+//     payload: error
+//   }
+// }

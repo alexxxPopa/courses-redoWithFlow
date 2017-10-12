@@ -2,7 +2,7 @@
 import * as React from 'react';
 import RegisterForm from './register_form';
 import { processErrorResponse } from '../../enhancers';
-import * as actions from '../../state/session/actions';
+import * as actions from '../../state/auth/signup';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { SubmissionError } from 'redux-form'
@@ -43,7 +43,7 @@ class Register extends React.Component<Props> {
 }
 
 const mapStateToProps = (state) => (
-  { error: state.session.error })
+  { error: state.auth.signup.registerError })
 
 const bindActionsToDispatch = (dispatch) => ({
   register: (values) => { 
@@ -51,11 +51,10 @@ const bindActionsToDispatch = (dispatch) => ({
     const promise = dispatch(actions.register(values));
     promise.then(() => dispatch(hideLoading()))
     .catch((error => {
-      dispatch(actions.processError(error))
+      dispatch(actions.errorActions.processError(error))
       dispatch(hideLoading())
     }))
     return promise
-    
   }
   })
 

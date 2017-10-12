@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import SearchBar from './search_bar';
 import { connect } from 'react-redux';
-import * as actions from '../state/session/actions'
+import * as actions from '../state/auth/actions'
 
 type Props = {
   isAuthenticated: boolean,
@@ -35,7 +35,7 @@ const registerButton = (props: Props) => {
 }
 
 const mapStateToProps = (state) => (
-  { isAuthenticated: state.session.isAuthenticated }
+  { isAuthenticated: state.auth.isAuthenticated }
 )
 
 const bindActionsToDispatch = (dispatch) => (

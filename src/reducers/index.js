@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import { reducer as form } from 'redux-form';
-import { session } from '../state';
+import { auth } from '../state';
 
 const rootReducer = combineReducers({
   form,
-  session
+  auth
 });
 
 export default rootReducer;

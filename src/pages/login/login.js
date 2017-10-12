@@ -1,7 +1,7 @@
 //@flow
 import * as React from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../../state/session/actions';
+import * as actions from '../../state/auth/actions';
 import LoginForm from './login_form';
 import { withRouter } from 'react-router';
 

@@ -29,6 +29,5 @@ const error = (state= {}, action) => {
 }
 
 export default combineReducers({
-  isAuthenticated: isAuthenticated,
-  error: error
+  isAuthenticated: isAuthenticated
 })

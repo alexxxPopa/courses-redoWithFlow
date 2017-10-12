@@ -24,7 +24,7 @@ export default function (ComposedComponent) {
   }
 
   const mapStateToProps = (state) => (
-    { isAuthenticated: state.session.isAuthenticated }
+    { isAuthenticated: state.auth.isAuthenticated }
   )
 
   const boundAuthentication =  connect(mapStateToProps)(Authentication);
