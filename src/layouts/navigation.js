@@ -34,9 +34,10 @@ const registerButton = (props: Props) => {
   }
 }
 
-const mapStateToProps = (state) => (
-  { isAuthenticated: state.auth.isAuthenticated }
-)
+const mapStateToProps = (state) => {
+  console.log(state.auth.signin.get('isAuthenticated'))
+  return { isAuthenticated: state.auth.signin.get('isAuthenticated') }
+}
 
 const bindActionsToDispatch = (dispatch) => (
   { logout: () => { dispatch(actions.logout()) } }

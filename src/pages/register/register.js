@@ -26,8 +26,8 @@ class Register extends React.Component<Props> {
   }
 
   renderServerError() {
-    if (!_.isEmpty(this.props.error)){
-     return (Object.values(this.props.error[0]))
+    if (!_.isEmpty(this.props.signupError)){
+     return (Object.values(this.props.signupError[0]))
     }
   }
 
@@ -42,7 +42,7 @@ class Register extends React.Component<Props> {
 }
 
 const mapStateToProps = (state) => (
-  { error: state.auth.signup.signupError })
+  { signupError: state.auth.signup.get('signupError') })
 
 const bindActionsToDispatch = (dispatch) => ({
   register: (values) => { 

@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.16.2",
     "flow-bin": "^0.56.0",
+    "immutable": "^3.8.2",
     "lodash": "^4.17.4",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",

@@ -24,8 +24,8 @@ class Login extends React.Component<any> {
   }
 
   renderServerError() {
-    if (!_.isEmpty(this.props.error)){
-     return this.props.error
+    if (!_.isEmpty(this.props.signinError)){
+     return this.props.signinError
      }
   }
 
@@ -54,7 +54,7 @@ const bindActionsToDispatch = (dispatch) => ({
   })
 
 const mapStateToProps = (state) => (
-  { error: state.auth.signin.signinError})
+  { signinError: state.auth.signin.get('signinError')})
 
 const BoundLogin = connect(mapStateToProps, bindActionsToDispatch)(Login)
 

@@ -11,6 +11,15 @@ type LoginParams= {
 
 export const signin = (values: LoginParams) => async dispatch =>{
   const body = Object.assign(values, {grant_type: 'password'})
-  await axios.post(types.ROOT_URL, body)
+  const response =  await axios.post(types.ROOT_URL, body)
+  dispatch(successSignin(response))
+} 
+
+const successSignin = (response) => {
+  return {
+    type: types.SIGN_IN
+  }
 }
+
+
 
