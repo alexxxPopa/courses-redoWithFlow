@@ -13,8 +13,10 @@ const signin = (state=initialState, action) => {
       return state.set('signinError', action.payload) 
     }
     case types.SIGN_IN: {
-      console.log("sadasdasda")
       return state.set('isAuthenticated', true)
+    }
+    case types.SIGN_OUT: {
+      return state.set('isAuthenticated', false)
     }
     default:
       return state

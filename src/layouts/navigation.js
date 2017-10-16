@@ -3,11 +3,11 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import SearchBar from './search_bar';
 import { connect } from 'react-redux';
-import * as actions from '../state/auth/actions'
+import * as actions from '../state/auth/signin';
 
 type Props = {
   isAuthenticated: boolean,
-  logout: () => boolean
+  signout: () => void
 }
 
 const Navigation = (props: Props): React.Node => (
@@ -21,9 +21,10 @@ const Navigation = (props: Props): React.Node => (
   </div >
 )
 
+
 const authButton = (props: Props) => {
   if (props.isAuthenticated) {
-    return <button onClick={() => props.logout()}> Sign Out </button>
+    return <Link to="/"><button onClick = { () => props.signout() }>Sign Out</button></Link>
   }
   return <Link to="/login"><button>Sign in</button></Link>
 }
@@ -35,12 +36,11 @@ const registerButton = (props: Props) => {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state.auth.signin.get('isAuthenticated'))
   return { isAuthenticated: state.auth.signin.get('isAuthenticated') }
 }
 
 const bindActionsToDispatch = (dispatch) => (
-  { logout: () => { dispatch(actions.logout()) } }
+  { signout: () => { dispatch(actions.signout()) } }
 )
 
 export default connect(mapStateToProps, bindActionsToDispatch)(Navigation);
