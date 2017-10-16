@@ -8,11 +8,17 @@ import reducers from './reducers';
 import routes from './routes';
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
+const store = createStoreWithMiddleware(reducers)
+
+const token = localStorage.getItem('token')
+if (token) {
+   store.dispatch({ type: 'SIGN_IN'})
+}
 
 class App extends Component {
   render() {
     return (
-      <Provider store={createStoreWithMiddleware(reducers)}>
+      <Provider store={store}>
         <BrowserRouter>
           <div>
             <Switch>
