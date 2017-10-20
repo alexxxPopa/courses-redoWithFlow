@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import * as types from './types';
-import axios from 'axios';
+import auth from  '../../../services/auth_service';
 
 type RegisterParams = {
   email: string,
@@ -11,7 +11,8 @@ type RegisterParams = {
 }
 
 export const signup = (values: RegisterParams) => async dispatch => {
-  await  axios.post(`${types.ROOT_URL}/users`, values) 
+  const { email, password, password_confirmation } = values
+  await auth.signup(email, password, password_confirmation) 
 }
 
 

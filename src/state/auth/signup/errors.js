@@ -3,7 +3,7 @@ import * as types from './types';
 import { processErrorResponse } from '../../../enhancers' 
 
 export const processSignupError = (error) => dispatch =>  {
-  const err =  processErrorResponse(error.response.data)
+  const err =  processErrorResponse(error.data)
   dispatch(signupError(err))
  } 
  

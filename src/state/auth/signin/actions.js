@@ -1,8 +1,8 @@
 //@flow
 
 import * as React from 'react';
-import axios from 'axios';
 import * as types from './types';
+import auth from  '../../../services/auth_service';
 
 type LoginParams= {
   email: string,
@@ -10,20 +10,19 @@ type LoginParams= {
 }
 
 export const signin = (values: LoginParams) => async dispatch =>{
-  const body = Object.assign(values, {grant_type: 'password'})
-  const response =  await axios.post(types.ROOT_URL, body)
+  const { email, password } = values
+
+  const response = await auth.signin(email, password)
   dispatch(successSignin(response))
 }
 
 export const signout = () => {
-  localStorage.removeItem('token')
   return {
     type: types.SIGN_OUT
   }
 }
 
 const successSignin = (response) => {
-  localStorage.setItem('token', response.data.token)
   return {
     type: types.SIGN_IN
   }
