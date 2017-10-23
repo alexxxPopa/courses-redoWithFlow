@@ -18,6 +18,9 @@ const signin = (state=initialState, action) => {
     case types.SIGN_OUT: {
       return state.set('isAuthenticated', false)
     }
+    case types.VALID_SESSION: {
+      return state.set('isAuthenticated', true)
+    }
     default:
       return state
   }

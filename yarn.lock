@@ -2854,7 +2854,7 @@ globby@^6.1.0:
 
 "goauth-js@git+https://github.com/mbitcasino/goauth-js.git":
   version "0.0.8"
-  resolved "git+https://github.com/mbitcasino/goauth-js.git#478fa9666e23aca8e141b0d36499266174368916"
+  resolved "git+https://github.com/mbitcasino/goauth-js.git#3a99055e0374b1f59235fe87f3a2f16a4fe8df96"
   dependencies:
     es6-promise "^4.1.1"
     isomorphic-fetch "^2.2.1"

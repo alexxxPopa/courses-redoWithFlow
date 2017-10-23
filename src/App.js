@@ -6,13 +6,14 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import reduxThunk from 'redux-thunk';
 import reducers from './reducers';
 import routes from './routes';
+import * as actions from './state/auth/signin'
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 const store = createStoreWithMiddleware(reducers)
 
 const token = localStorage.getItem('token')
 if (token) {
-   store.dispatch({ type: 'SIGN_IN'})
+   store.dispatch(actions.checkSession())
 }
 
 class App extends Component {
