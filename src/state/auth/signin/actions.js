@@ -16,10 +16,11 @@ export const signin = (values: LoginParams) => async dispatch =>{
   dispatch(successSignin(response))
 }
 
-export const signout = () => {
-  return {
-    type: types.SIGN_OUT
-  }
+export const signout = () => async dispatch => {
+  let currentUser = auth.currentUser()
+
+  await currentUser.signout()
+  dispatch(successSignout())
 }
 
 const successSignin = (response) => {
@@ -28,5 +29,9 @@ const successSignin = (response) => {
   }
 }
 
-
+const successSignout = () => {
+  return {
+    type: types.SIGN_OUT
+  }
+}
 

@@ -6,7 +6,7 @@
     "axios": "^0.16.2",
     "flow": "^0.2.3",
     "flow-bin": "^0.56.0",
-    "goauth-js": "0.0.4",
+    "goauth-js": "git+https://github.com/mbitcasino/goauth-js.git",
     "immutable": "^3.8.2",
     "lodash": "^4.17.4",
     "react": "^16.0.0",
