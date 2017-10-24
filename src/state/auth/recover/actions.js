@@ -10,8 +10,7 @@ type RecoverParams = {
 
 export const recoverPassword = (values: RecoverParams) => async dispatch =>  {
   const { email } = values
-
-  const response = await auth.requestPasswordRecovery(email)
+  await auth.requestPasswordRecovery(email)
 }
 
 export const handleRecoverError = (error) => dispatch =>  {

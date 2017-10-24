@@ -53,5 +53,3 @@ const mapStateToProps = (state) => {
 
 const BoundRecover = connect(mapStateToProps, bindActionsToDispatch)(Recover)
 export default withRouter(BoundRecover)
-
-//export default withRouter(connect(mapStateToProps, bindActionsToDispatch)(Recover));
