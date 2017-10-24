@@ -4,7 +4,6 @@ import * as React from 'react';
 import { Button, Icon, Form } from 'semantic-ui-react';
 import { Field, reduxForm } from 'redux-form';
 import { AppTemplate } from '../../layouts';
-import { connect } from 'react-redux';
 
 type LoginParams = {
   email: string,

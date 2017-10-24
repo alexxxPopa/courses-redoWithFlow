@@ -1,6 +1,5 @@
 
 import * as React from 'react';
-import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import RecoverForm from './recover_form';
 import { withRouter } from 'react-router';
