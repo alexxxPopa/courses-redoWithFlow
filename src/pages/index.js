@@ -4,4 +4,5 @@ export { default as Login } from './login';
 export { default as SearchList } from './search_list';
 export { default as MyPage } from './myPage';
 export { default as Confirmation } from './confirmation';
+export { default as Recover } from './recover';
 

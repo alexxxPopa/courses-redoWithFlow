@@ -11,7 +11,7 @@ type LoginParams = {
   password: string,
 }
 
-class Signin extends React.Component<any> {
+class SigninForm extends React.Component<any> {
   renderField(field): React.Node {
     const { meta: { touched, error } } = field;
 
@@ -29,10 +29,10 @@ class Signin extends React.Component<any> {
   }
 
   render() {
-    const { handleSubmit } = this.props;
+    const { handleSubmit, onSubmit } = this.props;
     return (
         <div>
-          <form onSubmit={ handleSubmit(this.props.onSubmit.bind(this)) }>
+          <form onSubmit={ handleSubmit(onSubmit.bind(this)) }>
             <Field
               label="Email"
               name="email"
@@ -51,11 +51,11 @@ class Signin extends React.Component<any> {
             <Button color='facebook'>
               <Icon name='facebook' />
               Log in with Facebook
-          </Button>
+            </Button>
             <Button color='google plus'>
               <Icon name='google plus' />
               Log in with Google
-          </Button>
+            </Button>
           </div>
         </div>
     );
@@ -79,4 +79,4 @@ function validate(values: LoginParams): mixed {
 export default reduxForm({
   validate,
   form: 'SigninForm'
-})(Signin);
+})(SigninForm);

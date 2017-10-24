@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import * as signinActions from '../../state/auth/signin';
+import RecoverButton from '../buttons/button-recover';
 import SigninForm from './login_form';
 import { withRouter } from 'react-router';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
@@ -32,8 +33,9 @@ class Login extends React.Component<any> {
   render() {
     return (
       <div>
-      <SigninForm onSubmit={ (values) => this.onSubmit(values) } />
-      { this.renderServerError() }
+        <SigninForm onSubmit={ (values) => this.onSubmit(values) } />
+        <RecoverButton />
+        { this.renderServerError() }
       </div>
     )
   }
