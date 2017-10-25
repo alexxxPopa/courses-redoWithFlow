@@ -1,8 +1,7 @@
 import * as React from 'react';
 import * as types from './types';
 import auth from '../../../services/auth_service';
-
-const errorMessage = 'Oops, we have a problem';
+import * as errors from '../utils/actions'
 
 type RecoverParams = {
   email: string
@@ -15,22 +14,8 @@ export const recoverPassword = (values: RecoverParams) => async dispatch =>  {
 
 export const handleRecoverError = (error) => dispatch =>  {
   if (error.data === undefined || error.data.message === undefined) {
-    dispatch(networkError())
+    dispatch(errors.networkError(types.RECOVER_ERROR))
   } else {
-    dispatch(serverError(error))
-  }   
-}
-
-const serverError = (error) => {
-  return {
-    type: types.RECOVER_ERROR,
-    payload: error.data.message
-  }
-}
-
-const networkError = () => {
-  return {
-    type: types.RECOVER_ERROR,
-    payload: errorMessage
-  }
+    dispatch(errors.serverError(error.data.message, types.RECOVER_ERROR))
+    }   
 }
