@@ -3,6 +3,7 @@
 import * as React from 'react';
 import * as types from './types';
 import auth from  '../../../services/auth_service';
+import { receiveRequest, receiveResponse } from '../../utils';
 
 type LoginParams= {
   email: string,
@@ -18,19 +19,20 @@ export const signin = (values: LoginParams) => async dispatch =>{
 
 export const signout = () => async dispatch => {
   let currentUser = auth.currentUser()
-
   await currentUser.signout()
   dispatch(successSignout())
 }
 
 export const checkSession = () => async dispatch => {
+  dispatch(receiveRequest())
   let currentUser = auth.currentUser()
 
   currentUser.jwt().then(response => {
-    console.log(response)
     dispatch (validSession())
+    dispatch(receiveResponse())
   }).catch(err => {
     dispatch (invalidSession())
+    dispatch (receiveResponse())
   })
 }
 

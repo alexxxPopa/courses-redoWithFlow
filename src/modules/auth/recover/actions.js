@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as types from './types';
 import auth from '../../../services/auth_service';
-import * as errors from '../utils/actions'
+import * as errors from '../../utils'
 
 type RecoverParams = {
   email: string

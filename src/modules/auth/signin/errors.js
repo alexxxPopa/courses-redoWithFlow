@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as types from './types';
-import * as errors from '../utils/actions';
+import * as errors from '../../utils';
 
 export const processSigninError = (error) => dispatch => {
   if (error.data === undefined || error.data.message === undefined) {

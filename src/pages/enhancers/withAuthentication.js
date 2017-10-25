@@ -6,25 +6,25 @@ import { withRouter } from 'react-router';
 export default function (ComposedComponent) {
   class Authentication extends React.Component<any> {
   
-    componentWillMount() {
-      if (!this.props.isAuthenticated) {
-        this.props.history.push('/')
-      }
-    }
-
-    componentWillUpdate(nextProps) {
+    componentWillReceiveProps(nextProps) {
       if(!nextProps.isAuthenticated) {
         this.props.history.push('/')
       }
     }
 
     render() {
-      return <ComposedComponent {...this.props} />
+      // return (this.props.isAuthenticated
+      //   ? <ComposedComponent {...this.props} />
+      //   : <div>Is loading ...</div>
+      // )
+      return <ComposedComponent { ...this.props} />
     }
   }
 
   const mapStateToProps = (state) => {
-    return { isAuthenticated: state.auth.signin.get('isAuthenticated') }
+    console.log(state.utils.get('isLoading'))
+    return { isAuthenticated: state.auth.signin.get('isAuthenticated'), 
+             isLoading: state.utils.get('isLoading') }
   }
 
   const boundAuthentication =  connect(mapStateToProps)(Authentication);

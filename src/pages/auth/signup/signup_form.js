@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { AppTemplate } from '../../components';
 import _ from 'lodash';
 
 type RegisterParams = {
@@ -14,7 +13,7 @@ type RegisterParams = {
 class SignupForm extends React.Component<any> {
 
   renderField(field): React.Node {
-    const { err, meta: { touched, error } } = field;
+    const { meta: { touched, error } } = field;
 
     return (
       <div>
@@ -60,8 +59,6 @@ class SignupForm extends React.Component<any> {
     )
   }
 }
-
-
 
 function validate(values: RegisterParams): mixed {
   let errors = {};

@@ -21,7 +21,6 @@ const Navigation = (props: Props): React.Node => (
   </div >
 )
 
-
 const authButton = (props: Props) => {
   if (props.isAuthenticated) {
     return <Link to="/"><button onClick = { () => props.signout() }>Sign Out</button></Link>
@@ -36,7 +35,6 @@ const registerButton = (props: Props) => {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state.auth.signin.get('isAuthenticated'))
   return { isAuthenticated: state.auth.signin.get('isAuthenticated') }
 }
 
