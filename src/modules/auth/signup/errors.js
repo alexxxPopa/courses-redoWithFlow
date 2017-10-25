@@ -7,7 +7,7 @@ export const processSignupError = (error) => dispatch =>  {
   if (error.data === undefined) {
     dispatch(errors.networkError(types.SIGNUP_ERROR))
   } else {
-    let err =  processErrorResponse(error.data)  
-    dispatch(errors.serverError(err, types.SIGNUP_ERROR))
+    let err = Object.values(processErrorResponse(error.data)[0])  
+    dispatch(errors.serverError(err[0], types.SIGNUP_ERROR))
   }
-} 
+}

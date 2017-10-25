@@ -21,8 +21,9 @@ class SigninForm extends React.Component<any> {
           placeholder={field.label}
           {...field.input}
         />
-        {touched &&
-        ((error && <span>{error}</span>))}
+        <span>
+          {touched ? error : ''}
+        </span>
       </div>
     );
   }

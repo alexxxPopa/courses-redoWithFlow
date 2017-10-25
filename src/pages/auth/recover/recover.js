@@ -6,7 +6,7 @@ import { withRouter } from 'react-router';
 import { reset } from 'redux-form'
 import { recoverPassword, handleRecoverError } from '../../../modules/auth/recover';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
-import AppTemplate from '../../components/app'
+import AppTemplate from '../../components/app';
 import _ from 'lodash';
 
 

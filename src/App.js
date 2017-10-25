@@ -9,9 +9,11 @@ import { reducer as form } from 'redux-form';
 import { auth } from './modules';
 import routes from './routes';
 import * as actions from './modules/auth/signin'
+import { loadingBarReducer } from 'react-redux-loading-bar'
 
 const rootReducer = combineReducers({
   form,
+  loadingBar: loadingBarReducer,
   auth
 })
 

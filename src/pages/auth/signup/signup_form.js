@@ -33,32 +33,30 @@ class SignupForm extends React.Component<any> {
   render() {
     const { handleSubmit, error, onSubmit } = this.props;
     return (
-      <AppTemplate>
-        <div>
-          <form onSubmit={handleSubmit(onSubmit.bind(this))}>
-            <Field
-              label="Email"
-              name="email"
-              type="text"
-              component={this.renderField}
-            />
-            <Field
-              label="Password"
-              name="password"
-              type="password"
-              component={this.renderField}
-            />
-            <Field
-              label="Repeat Password"
-              name="password_confirmation"
-              type="password"
-              component={this.renderField}
-            />
-            <button type="submit">Submit</button>
-            {error && <strong>{error}</strong>}
-          </form>
-        </div>
-      </AppTemplate>
+      <div>
+        <form onSubmit={handleSubmit(onSubmit.bind(this))}>
+          <Field
+            label="Email"
+            name="email"
+            type="text"
+            component={this.renderField}
+          />
+          <Field
+            label="Password"
+            name="password"
+            type="password"
+            component={this.renderField}
+          />
+          <Field
+            label="Repeat Password"
+            name="password_confirmation"
+            type="password"
+            component={this.renderField}
+          />
+          <button type="submit">Submit</button>
+          {error && <strong>{error}</strong>}
+        </form>
+      </div>
     )
   }
 }

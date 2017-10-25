@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import _ from 'lodash';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
+import AppTemplate from '../../components/app';
 
 type Props = {
   register: (values: RegisterParams) => void,
@@ -27,16 +28,18 @@ class Register extends React.Component<Props> {
 
   renderServerError() {
     if (!_.isEmpty(this.props.signupError)){
-     return (Object.values(this.props.signupError[0]))
+    return this.props.signupError
     }
   }
 
   render() { 
     return (
-      <div>
-        <SignupForm onSubmit={(values) => this.onSubmit(values)} />
-        { this.renderServerError() }
-      </div>
+      <AppTemplate>
+        <div>
+          <SignupForm onSubmit={(values) => this.onSubmit(values)} />
+          { this.renderServerError() }
+        </div>
+      </ AppTemplate>
     )
   }
 }

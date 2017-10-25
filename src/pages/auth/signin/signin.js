@@ -8,6 +8,7 @@ import { withRouter } from 'react-router';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import { reset } from 'redux-form'
 import _ from 'lodash';
+import AppTemplate from '../../components/app';
 
 type Props = {
   login: () => boolean
@@ -32,11 +33,13 @@ class Login extends React.Component<any> {
 
   render() {
     return (
-      <div>
-        <SigninForm onSubmit={ (values) => this.onSubmit(values) } />
-        <RecoverButton />
-        { this.renderServerError() }
-      </div>
+      <AppTemplate>
+        <div>
+          <SigninForm onSubmit={ (values) => this.onSubmit(values) } />
+          <RecoverButton />
+          { this.renderServerError() }
+        </div>
+      </ AppTemplate>
     )
   }
 }
