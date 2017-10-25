@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as types from './types';
-import { processErrorResponse } from '../../../enhancers'
+import { processErrorResponse } from '../../../pages/enhancers'
 import * as errors from '../utils/actions'; 
 
 export const processSignupError = (error) => dispatch =>  {

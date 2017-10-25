@@ -1,6 +1,6 @@
 
 import { Home, Login, Register, SearchList, MyPage, Confirmation, Recover } from '../pages';
-import { withAuthentication } from '../enhancers/';
+import { withAuthentication } from '../pages/enhancers/';
 
 const routes = [
   {

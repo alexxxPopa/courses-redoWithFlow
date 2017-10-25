@@ -4,12 +4,19 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import reduxThunk from 'redux-thunk';
-import reducers from './reducers';
+import { combineReducers } from 'redux';
+import { reducer as form } from 'redux-form';
+import { auth } from './modules';
 import routes from './routes';
-import * as actions from './state/auth/signin'
+import * as actions from './modules/auth/signin'
+
+const rootReducer = combineReducers({
+  form,
+  auth
+})
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
-const store = createStoreWithMiddleware(reducers)
+const store = createStoreWithMiddleware(rootReducer)
 
 const token = localStorage.getItem('token')
 if (token) {

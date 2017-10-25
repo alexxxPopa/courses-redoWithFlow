@@ -1,8 +1,8 @@
 
 import * as React from 'react';
-import SignupForm from './register_form';
+import SignupForm from './signup_form';
 import { processErrorResponse } from '../../enhancers';
-import * as signupActions from '../../state/auth/signup';
+import * as signupActions from '../../../modules/auth/signup';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import _ from 'lodash';

@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import SearchBar from './search_bar';
 import { connect } from 'react-redux';
-import * as actions from '../state/auth/signin';
+import * as actions from '../../modules/auth/signin';
 
 type Props = {
   isAuthenticated: boolean,

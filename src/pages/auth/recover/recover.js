@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import RecoverForm from './recover_form';
 import { withRouter } from 'react-router';
 import { reset } from 'redux-form'
-import { recoverPassword, handleRecoverError } from '../../state/auth/recover';
+import { recoverPassword, handleRecoverError } from '../../../modules/auth/recover';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
-import AppTemplate from '../../layouts/app'
+import AppTemplate from '../../components/app'
 import _ from 'lodash';
 
 

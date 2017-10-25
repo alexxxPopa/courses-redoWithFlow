@@ -1,9 +1,9 @@
 //@flow
 import * as React from 'react';
 import { connect } from 'react-redux';
-import * as signinActions from '../../state/auth/signin';
+import * as signinActions from '../../../modules/auth/signin';
 import RecoverButton from '../buttons/button-recover';
-import SigninForm from './login_form';
+import SigninForm from './signin_form';
 import { withRouter } from 'react-router';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import { reset } from 'redux-form'

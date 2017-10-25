@@ -1,7 +1,7 @@
 // @flow
 
 import * as React from 'react';
-import { AppTemplate } from '../layouts';
+import { AppTemplate } from './components';
 
 export default class SearchList extends React.Component<any> {
 

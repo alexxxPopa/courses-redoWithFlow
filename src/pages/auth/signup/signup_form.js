@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { AppTemplate } from '../../layouts';
+import { AppTemplate } from '../../components';
 import _ from 'lodash';
 
 type RegisterParams = {

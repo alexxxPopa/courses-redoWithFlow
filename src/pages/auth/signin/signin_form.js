@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { Button, Icon, Form } from 'semantic-ui-react';
 import { Field, reduxForm } from 'redux-form';
-import { AppTemplate } from '../../layouts';
+import { AppTemplate } from '../../components';
 
 type LoginParams = {
   email: string,
