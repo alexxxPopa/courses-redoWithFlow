@@ -1,28 +1,39 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-
+import { AppTemplate } from '../components';
 
 export default function (ComposedComponent) {
   class Authentication extends React.Component<any> {
+
+    componentWillMount() {
+      if (!this.props.isAuthenticated && !this.props.isLoading ) {
+        this.props.history.push('/')
+      }
+    }
   
     componentWillReceiveProps(nextProps) {
-      if(!nextProps.isAuthenticated) {
+      if(!nextProps.isAuthenticated && !nextProps.isLoading) {
         this.props.history.push('/')
       }
     }
 
     render() {
-      // return (this.props.isAuthenticated
-      //   ? <ComposedComponent {...this.props} />
-      //   : <div>Is loading ...</div>
-      // )
-      return <ComposedComponent { ...this.props} />
+      if (this.props.isLoading) {
+        console.log('isLoading' ,this.props.isLoading)
+        console.log('sdasksdaskmdkasdmkla')
+        console.log(this.props.isAuthenticated)
+        return <AppTemplate />
+      }
+      return ( 
+      <AppTemplate>
+      <ComposedComponent { ...this.props} />
+      </ AppTemplate>
+      )
     }
   }
 
   const mapStateToProps = (state) => {
-    console.log(state.utils.get('isLoading'))
     return { isAuthenticated: state.auth.signin.get('isAuthenticated'), 
              isLoading: state.utils.get('isLoading') }
   }

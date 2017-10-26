@@ -4,4 +4,4 @@ const myPage = () => (
   <div> This is my page !! </div>
 )
 
-export default myPage;gi
+export default myPage;
