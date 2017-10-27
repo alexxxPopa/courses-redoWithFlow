@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import SearchBar from './search_bar';
 import { connect } from 'react-redux';
 import * as actions from '../../modules/auth/signin';
+import { SignupButton, AuthButton } from '../auth/buttons';
 
 type Props = {
   isAuthenticated: boolean,
@@ -14,25 +15,12 @@ const Navigation = (props: Props): React.Node => (
   <div>
     <nav>
       <Link to="/">Home</Link>
-      {registerButton(props)}
-      {authButton(props)}
+      {SignupButton(props.isAuthenticated)}
+      {AuthButton(props)}
     </nav>
     <SearchBar />
   </div >
 )
-
-const authButton = (props: Props) => {
-  if (props.isAuthenticated) {
-    return <Link to="/"><button onClick = { () => props.signout() }>Sign Out</button></Link>
-  }
-  return <Link to="/login"><button>Sign in</button></Link>
-}
-
-const registerButton = (props: Props) => {
-  if (!props.isAuthenticated) {
-    return <Link to='/register'><button> Register </button></Link>
-  }
-}
 
 const mapStateToProps = (state) => {
   return { isAuthenticated: state.auth.signin.get('isAuthenticated') }

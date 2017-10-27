@@ -4,6 +4,7 @@ import * as React from 'react';
 import * as types from './types';
 import auth from  '../../../services/auth_service';
 import { receiveRequest, receiveResponse } from '../../utils';
+import { showLoading, hideLoading } from 'react-redux-loading-bar';
 
 type LoginParams= {
   email: string,
@@ -18,9 +19,11 @@ export const signin = (values: LoginParams) => async dispatch =>{
 }
 
 export const signout = () => async dispatch => {
+  dispatch(showLoading())
   let currentUser = auth.currentUser()
   await currentUser.signout()
   dispatch(successSignout())
+  dispatch(hideLoading())
 }
 
 export const checkSession = () => async dispatch => {

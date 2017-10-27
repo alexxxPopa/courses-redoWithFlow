@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import * as signinActions from '../../../modules/auth/signin';
-import RecoverButton from '../buttons/button-recover';
+import { RecoverButton } from '../buttons';
 import SigninForm from './signin_form';
 import { withRouter } from 'react-router';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
@@ -11,7 +11,7 @@ import _ from 'lodash';
 import AppTemplate from '../../components/app';
 
 type Props = {
-  login: () => boolean
+  signin: () => boolean
 }
 
 type LoginParams = {
