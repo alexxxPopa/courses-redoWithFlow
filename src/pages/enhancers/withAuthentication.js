@@ -20,8 +20,6 @@ export default function (ComposedComponent) {
 
     render() {
       if (this.props.isLoading) {
-        console.log('isLoading' ,this.props.isLoading)
-        console.log('sdasksdaskmdkasdmkla')
         console.log(this.props.isAuthenticated)
         return <AppTemplate />
       }

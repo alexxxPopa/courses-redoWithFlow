@@ -1,30 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
-import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import reduxThunk from 'redux-thunk';
-import { combineReducers } from 'redux';
-import { reducer as form } from 'redux-form';
-import { auth, utils } from './modules'; 
 import routes from './routes';
-import * as actions from './modules/auth/signin'
-import { loadingBarReducer } from 'react-redux-loading-bar'
+import configureStore from './configureStore';
+import checkToken from './token';
 
-const rootReducer = combineReducers({
-  form,
-  loadingBar: loadingBarReducer,
-  utils,
-  auth
-})
-
-const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
-const store = createStoreWithMiddleware(rootReducer)
-const token = localStorage.getItem('token');
-
-if (token) {
-   store.dispatch(actions.checkSession())
-}
+const store = configureStore()
+checkToken(store)
 
 class App extends Component {
   render() {
