@@ -9,6 +9,7 @@ import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import { reset } from 'redux-form'
 import _ from 'lodash';
 import AppTemplate from '../../components/app';
+import GoogleSignin from '../buttons/google_signin';
 
 type Props = {
   signin: () => boolean
@@ -37,6 +38,7 @@ class Login extends React.Component<any> {
         <div>
           <SigninForm onSubmit={ (values) => this.onSubmit(values) } />
           <RecoverButton />
+          <GoogleSignin />
           { this.renderServerError() }
         </div>
       </ AppTemplate>

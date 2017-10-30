@@ -47,14 +47,6 @@ class SigninForm extends React.Component<any> {
             <button type="submit">Login</button>
           </form>
           <div>
-            <Button color='facebook'>
-              <Icon name='facebook' />
-              Log in with Facebook
-            </Button>
-            <Button color='google plus'>
-              <Icon name='google plus' />
-              Log in with Google
-            </Button>
           </div>
         </div>
     );
