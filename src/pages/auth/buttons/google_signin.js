@@ -31,7 +31,9 @@ function initClient() {
       GoogleAuth.disconnect()
       return;
     }
-   GoogleAuth.signIn().then(e => console.log(e))
+   GoogleAuth.signIn().then(e => {
+    console.log(e)
+   })
   })
 }
 
