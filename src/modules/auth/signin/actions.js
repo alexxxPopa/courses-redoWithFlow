@@ -18,6 +18,12 @@ export const signin = (values: LoginParams) => async dispatch =>{
   dispatch(successSignin(response))
 }
 
+export const externalSignin = (email: string, provider: string) => async dispatch =>{
+  const response = await auth.externalSignin(email, provider)
+  
+  dispatch(successSignin(response))
+}
+
 export const signout = () => async dispatch => {
   dispatch(showLoading())
   let currentUser = auth.currentUser()
