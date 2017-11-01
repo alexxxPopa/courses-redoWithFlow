@@ -10,6 +10,7 @@ import { reset } from 'redux-form'
 import _ from 'lodash';
 import AppTemplate from '../../components/app';
 import GoogleSignin from '../buttons/google_signin';
+import FacebookSignin from '../buttons/facebook_signin';
 
 type Props = {
   signin: () => boolean
@@ -37,8 +38,9 @@ class Login extends React.Component<any> {
       <AppTemplate>
         <div>
           <SigninForm onSubmit={ (values) => this.onSubmit(values) } />
-          <RecoverButton />
           <GoogleSignin />
+          <FacebookSignin />
+          <RecoverButton />
           { this.renderServerError() }
         </div>
       </ AppTemplate>
