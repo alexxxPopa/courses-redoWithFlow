@@ -34,10 +34,8 @@ export const signout = () => async dispatch => {
 
 export const checkSession = () => async dispatch => {
   dispatch(receiveRequest())
-  let currentUser = auth.currentUser()
-
-  currentUser.jwt().then(response => {
-    dispatch (validSession())
+  auth.currentUser().then(response => {
+    dispatch (validSession(response))
     dispatch(receiveResponse())
   }).catch(err => {
     dispatch (invalidSession())
@@ -51,15 +49,17 @@ const invalidSession = () => {
   }
 }
 
-const validSession = () => {
+const validSession = (response) => {
   return {
-    type: types.VALID_SESSION
+    type: types.VALID_SESSION,
+    payload: response.savedUser
   }
 }
 
 const successSignin = (response) => {
   return {
-    type: types.SIGN_IN
+    type: types.SIGN_IN,
+    payload: response.savedUser
   }
 }
 
