@@ -32,7 +32,7 @@ export default function (ComposedComponent) {
 
   const mapStateToProps = (state) => {
     return { isAuthenticated: state.auth.signin.get('isAuthenticated'), 
-             isLoading: state.utils.get('isLoading') }
+              isLoading: state.utils.get('isLoading') }
   }
 
   const boundAuthentication =  connect(mapStateToProps)(Authentication);
