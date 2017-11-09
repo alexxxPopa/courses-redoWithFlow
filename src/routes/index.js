@@ -1,5 +1,6 @@
 
 import { Home, Login, Register, SearchList, MyPage, Confirmation, Recover } from '../pages';
+import  PlansIndex  from '../pages/subscriptions/plans';
 import { withAuthentication } from '../pages/enhancers/';
 
 const routes = [
@@ -22,6 +23,11 @@ const routes = [
     path: "/myPage",
     component: withAuthentication(MyPage),
     exact: true,
+  },
+  {
+    path: "/plans",
+    component: withAuthentication(PlansIndex),
+    exact: true
   },
   {
     path: "/confirmation",
