@@ -19,9 +19,6 @@ export default function (ComposedComponent) {
     }
 
     render() {
-      if (this.props.isLoading) {
-        return <AppTemplate />
-      }
       return ( 
       <AppTemplate>
       <ComposedComponent { ...this.props} />

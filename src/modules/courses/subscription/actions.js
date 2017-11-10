@@ -5,11 +5,11 @@ import { receiveRequest, receiveResponse } from '../../utils';
 import axios from 'axios';
 
 export const getPlans = () => async dispatch => {
-  dispatch(receiveRequest())
+  dispatch(showLoading())
 
   const response = await axios.get(types.ROOT_URL);
   dispatch(successGetPlans(response))
-  dispatch(receiveResponse())
+  dispatch(hideLoading())
 }
 
 const successGetPlans = (response) => {

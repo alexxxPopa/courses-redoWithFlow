@@ -5,13 +5,14 @@ import { getPlans } from '../../modules/courses/subscription'
 class plansIndex extends Component {
 
   componentDidMount() {
-    this.props.get_subscriptions()
+    this.props.getSubscriptions()
   }
 
   renderPlans() {
+    console.log(this.props.plans)
     return this.props.plans.map( (plan) => {
       return (
-        <li key = {plan.id}>
+        <li key = { plan.Title }>
           { plan.Title } 
         </li>
       )
@@ -29,13 +30,12 @@ class plansIndex extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  // console.log(state.courses.subscription.get('plans'))
-  return {plans : state.courses.subscription.get('plans')}
-}
+const mapStateToProps = (state) => ({
+  plans : state.courses.subscription.get('plans')
+})
 
 const bindActionsToDispatch = (dispatch) => ({
-  get_subscriptions: () => {
+  getSubscriptions: () => {
     dispatch(getPlans())
   }
 })
