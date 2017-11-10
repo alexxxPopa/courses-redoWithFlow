@@ -1,18 +1,34 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getPlans } from '../../modules/courses/subscription'
+import { getPlans } from '../../modules/courses/subscription';
+import Checkout from './stripe/checkout';
 
 class plansIndex extends Component {
+
+  constructor() {
+    super()
+    this.state = {
+      showPopup: false
+    };
+  }
+
+  togglePopup() {
+    this.setState({
+      showPopup: !this.state.showPopup
+    });
+  }
 
   componentDidMount() {
     this.props.getSubscriptions()
   }
 
+
+
   renderPlans() {
-    console.log(this.props.plans)
     return this.props.plans.map( (plan) => {
       return (
-        <li key = { plan.Title }>
+        <li key = { plan.Title }
+            onClick = { this.togglePopup.bind(this)}>
           { plan.Title } 
         </li>
       )
@@ -25,6 +41,10 @@ class plansIndex extends Component {
         <ul>
           { this.renderPlans() }
         </ul>
+        { this.state.showPopup ?
+         <Checkout 
+          closePopup={this.togglePopup.bind(this)} 
+          /> : null }
       </div>
     )
   }

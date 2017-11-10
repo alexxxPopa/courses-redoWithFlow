@@ -12,6 +12,10 @@ export const getPlans = () => async dispatch => {
   dispatch(hideLoading())
 }
 
+export const subscribe = () => async dispatch => {
+  dispatch(showLoading())
+}
+
 const successGetPlans = (response) => {
   return {
     type: types.GET_PLANS,
