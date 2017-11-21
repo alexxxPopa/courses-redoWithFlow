@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as types from './types';
-import auth from '../../../services/auth_service';
+import { auth } from '../../../services';
 import * as errors from '../../utils'
 
 type RecoverParams = {

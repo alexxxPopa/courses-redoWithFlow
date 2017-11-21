@@ -6,10 +6,7 @@ class Checkout extends Component {
   render() {
     return (
       <Elements>
-        <CheckoutForm />
-        <button onClick = {this.props.closePopup}>
-          Close
-        </button>
+        <CheckoutForm closePopup = { this.props.closePopup }/>     
       </Elements>   
     )
   }

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "axios": "^0.16.2",
+    "courses-js": "git+https://github.com/mbitcasino/courses-js.git",
     "flow": "^0.2.3",
     "flow-bin": "^0.56.0",
     "goauth-js": "git+https://github.com/mbitcasino/goauth-js.git",

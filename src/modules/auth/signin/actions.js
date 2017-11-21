@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import * as types from './types';
-import auth from  '../../../services/auth_service';
+import { auth } from  '../../../services';
 import { receiveRequest, receiveResponse } from '../../utils';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 

@@ -12,7 +12,8 @@ class plansIndex extends Component {
     };
   }
 
-  togglePopup() {
+  togglePopup = () =>  {
+    console.log('nonom')
     this.setState({
       showPopup: !this.state.showPopup
     });
@@ -28,7 +29,7 @@ class plansIndex extends Component {
     return this.props.plans.map( (plan) => {
       return (
         <li key = { plan.Title }
-            onClick = { this.togglePopup.bind(this)}>
+            onClick = { this.togglePopup}>
           { plan.Title } 
         </li>
       )
@@ -43,7 +44,7 @@ class plansIndex extends Component {
         </ul>
         { this.state.showPopup ?
          <Checkout 
-          closePopup={this.togglePopup.bind(this)} 
+          closePopup={this.togglePopup} 
           /> : null }
       </div>
     )
